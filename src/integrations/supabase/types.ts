@@ -14,7 +14,131 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          brand: string | null
+          category_id: string | null
+          created_at: string
+          description: string | null
+          dimensions: string | null
+          features: string[] | null
+          id: string
+          images: string[] | null
+          is_featured: boolean
+          model: string | null
+          name: string
+          price: number
+          rating: number
+          specifications: string | null
+          stock_quantity: number
+          updated_at: string
+          warranty: string | null
+          weight: number | null
+        }
+        Insert: {
+          brand?: string | null
+          category_id?: string | null
+          created_at?: string
+          description?: string | null
+          dimensions?: string | null
+          features?: string[] | null
+          id?: string
+          images?: string[] | null
+          is_featured?: boolean
+          model?: string | null
+          name: string
+          price?: number
+          rating?: number
+          specifications?: string | null
+          stock_quantity?: number
+          updated_at?: string
+          warranty?: string | null
+          weight?: number | null
+        }
+        Update: {
+          brand?: string | null
+          category_id?: string | null
+          created_at?: string
+          description?: string | null
+          dimensions?: string | null
+          features?: string[] | null
+          id?: string
+          images?: string[] | null
+          is_featured?: boolean
+          model?: string | null
+          name?: string
+          price?: number
+          rating?: number
+          specifications?: string | null
+          stock_quantity?: number
+          updated_at?: string
+          warranty?: string | null
+          weight?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          id: string
+          name: string | null
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
