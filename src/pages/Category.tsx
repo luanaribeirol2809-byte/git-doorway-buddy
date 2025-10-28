@@ -13,6 +13,8 @@ const Category = () => {
   const [category, setCategory] = useState<any>(null);
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [sortBy, setSortBy] = useState('relevance');
 
   useEffect(() => {
     const fetchCategoryAndProducts = async () => {
@@ -71,6 +73,26 @@ const Category = () => {
     );
   }
 
+  // Função para ordenar produtos
+  const getSortedProducts = () => {
+    const sorted = [...products];
+    
+    switch (sortBy) {
+      case 'price-low':
+        return sorted.sort((a, b) => Number(a.price) - Number(b.price));
+      case 'price-high':
+        return sorted.sort((a, b) => Number(b.price) - Number(a.price));
+      case 'rating':
+        return sorted.sort((a, b) => (b.rating || 5) - (a.rating || 5));
+      case 'name':
+        return sorted.sort((a, b) => a.name.localeCompare(b.name));
+      default:
+        return sorted;
+    }
+  };
+
+  const sortedProducts = getSortedProducts();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -99,7 +121,7 @@ const Category = () => {
             
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground">Ordenar por:</span>
-              <Select defaultValue="relevance">
+              <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="Relevância" />
                 </SelectTrigger>
@@ -115,19 +137,30 @@ const Category = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm">
+            <Button 
+              variant={viewMode === 'grid' ? 'default' : 'outline'} 
+              size="sm"
+              onClick={() => setViewMode('grid')}
+            >
               <Grid className="h-4 w-4" />
             </Button>
-            <Button variant="outline" size="sm">
+            <Button 
+              variant={viewMode === 'list' ? 'default' : 'outline'} 
+              size="sm"
+              onClick={() => setViewMode('list')}
+            >
               <List className="h-4 w-4" />
             </Button>
           </div>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.length > 0 ? (
-            products.map((product) => (
+        {/* Products Grid/List */}
+        <div className={viewMode === 'grid' 
+          ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" 
+          : "flex flex-col gap-4"
+        }>
+          {sortedProducts.length > 0 ? (
+            sortedProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 id={product.id}
