@@ -30,6 +30,7 @@ const Index = () => {
       const { data: productsData } = await supabase
         .from('products')
         .select('*')
+        .eq('is_featured', true)
         .limit(4)
         .order('created_at', { ascending: false });
 
