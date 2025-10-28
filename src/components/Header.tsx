@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import logo from "@/assets/logo.jpeg";
 
 const Header = () => {
   const { user, isAdmin, signOut } = useAuth();
@@ -104,12 +105,12 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2">
-              <div className="h-8 w-8 bg-gradient-to-br from-primary to-primary-glow rounded-md flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">
-                  TS
-                </span>
-              </div>
-              <span className="text-xl font-bold text-foreground">
+              <img 
+                src={logo} 
+                alt="ATACADO FERRAMENTAS DISTRIBUICAO LTDA" 
+                className="h-10 w-10 object-contain rounded-md"
+              />
+              <span className="text-xl font-bold text-foreground hidden sm:inline">
                 ATACADO FERRAMENTAS
               </span>
             </Link>
