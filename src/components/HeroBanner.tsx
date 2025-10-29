@@ -74,6 +74,9 @@ export const HeroBanner = () => {
               size="lg"
               variant="outline"
               className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 md:px-8 py-5 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 group/btn backdrop-blur-sm"
+              onClick={() => {
+                document.getElementById('featured-products')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               Ver Produtos
               <ArrowRight className="h-4 md:h-5 w-4 md:w-5 ml-2 transition-transform group-hover/btn:translate-x-1" />
