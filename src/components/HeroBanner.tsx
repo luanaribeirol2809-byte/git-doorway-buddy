@@ -13,7 +13,7 @@ export const HeroBanner = () => {
   };
 
   return (
-    <section className="relative h-[500px] md:h-[600px] overflow-hidden rounded-lg mx-4 my-6 group">
+    <section className="relative min-h-[600px] md:h-[600px] overflow-hidden rounded-lg mx-4 my-6 group">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <img
@@ -32,9 +32,9 @@ export const HeroBanner = () => {
       <div className="absolute bottom-20 left-10 w-16 h-16 bg-primary/20 rounded-full blur-lg animate-pulse delay-1000 hidden md:block"></div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
+      <div className="relative z-10 container mx-auto px-4 h-full flex items-center py-12 md:py-0">
         <div className="max-w-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in">
+          <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight animate-fade-in">
             <span
               className="inline-block animate-fade-in text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
               style={{ animationDelay: "0.2s" }}
@@ -50,7 +50,7 @@ export const HeroBanner = () => {
           </h1>
 
           <p
-            className="text-xl md:text-2xl mb-8 text-white/95 leading-relaxed animate-fade-in drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+            className="text-base md:text-2xl mb-6 md:mb-8 text-white/95 leading-relaxed animate-fade-in drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
             style={{ animationDelay: "0.6s" }}
           >
             Equipamentos de qualidade para profissionais exigentes. Mais de 20
@@ -63,20 +63,20 @@ export const HeroBanner = () => {
           >
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-6 text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 group/btn"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 md:px-8 py-5 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 group/btn"
               onClick={handleWhatsAppClick}
             >
-              <MessageCircle className="h-5 w-5 mr-2 transition-transform group-hover/btn:rotate-12" />
+              <MessageCircle className="h-4 md:h-5 w-4 md:w-5 mr-2 transition-transform group-hover/btn:rotate-12" />
               Fale Conosco
             </Button>
 
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-6 text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 group/btn backdrop-blur-sm"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 md:px-8 py-5 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 group/btn backdrop-blur-sm"
             >
               Ver Produtos
-              <ArrowRight className="h-5 w-5 ml-2 transition-transform group-hover/btn:translate-x-1" />
+              <ArrowRight className="h-4 md:h-5 w-4 md:w-5 ml-2 transition-transform group-hover/btn:translate-x-1" />
             </Button>
           </div>
 
