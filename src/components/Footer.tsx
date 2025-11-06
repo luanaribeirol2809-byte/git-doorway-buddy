@@ -70,7 +70,7 @@ export const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>
-            &copy; 2024 MARCOS ANTONIO SANTOS DE PAULA. Todos os direitos
+            &copy; 2024 53.677.354 MARCOS ANTONIO SANTOS DE PAULA. Todos os direitos
             reservados.
           </p>
           <p className="mt-2">CNPJ: 53.677.354/0001-31</p>
