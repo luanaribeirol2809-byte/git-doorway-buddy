@@ -15,7 +15,7 @@ export const Footer = () => {
                 className="h-12 w-12 object-contain rounded-md"
               />
               <h3 className="text-lg font-bold text-primary">
-                MARCOS ANTONIO SANTOS DE PAULA
+                53.677.354 MARCOS ANTONIO SANTOS DE PAULA
               </h3>
             </div>
             <p className="text-muted-foreground mb-4">
