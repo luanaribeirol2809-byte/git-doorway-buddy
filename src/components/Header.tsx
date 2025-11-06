@@ -111,7 +111,7 @@ const Header = () => {
                 className="h-10 w-10 object-contain rounded-md"
               />
               <span className="text-xl font-bold text-foreground hidden sm:inline">
-                MARCOS MÁQUINAS E FERRAMENTAS
+                53.677.354 MARCOS MÁQUINAS E FERRAMENTAS
               </span>
             </Link>
           </div>
