@@ -23,7 +23,7 @@ import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import logo from "@/assets/logo.jpeg";
+import logo from "@/assets/logo-marcos.jpeg";
 
 const Header = () => {
   const { user, isAdmin, signOut } = useAuth();
@@ -107,11 +107,11 @@ const Header = () => {
             <Link to="/" className="flex items-center gap-2">
               <img 
                 src={logo} 
-                alt="ATACADO FERRAMENTAS DISTRIBUICAO LTDA" 
+                alt="MARCOS ANTONIO SANTOS DE PAULA" 
                 className="h-10 w-10 object-contain rounded-md"
               />
               <span className="text-xl font-bold text-foreground hidden sm:inline">
-                ATACADO FERRAMENTAS
+                MARCOS MÁQUINAS E FERRAMENTAS
               </span>
             </Link>
           </div>

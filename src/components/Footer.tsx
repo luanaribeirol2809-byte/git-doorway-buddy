@@ -1,5 +1,5 @@
 import { Phone, MapPin, Clock } from "lucide-react";
-import logo from "@/assets/logo.jpeg";
+import logo from "@/assets/logo-marcos.jpeg";
 
 export const Footer = () => {
   return (
@@ -11,11 +11,11 @@ export const Footer = () => {
             <div className="flex items-center gap-3 mb-4">
               <img 
                 src={logo} 
-                alt="ATACADO FERRAMENTAS DISTRIBUICAO LTDA" 
+                alt="MARCOS ANTONIO SANTOS DE PAULA" 
                 className="h-12 w-12 object-contain rounded-md"
               />
               <h3 className="text-lg font-bold text-primary">
-                ATACADO FERRAMENTAS DISTRIBUICAO LTDA
+                MARCOS ANTONIO SANTOS DE PAULA
               </h3>
             </div>
             <p className="text-muted-foreground mb-4">
@@ -70,10 +70,10 @@ export const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>
-            &copy; 2024 ATACADO FERRAMENTAS DISTRIBUICAO LTDA. Todos os direitos
+            &copy; 2024 MARCOS ANTONIO SANTOS DE PAULA. Todos os direitos
             reservados.
           </p>
-          <p className="mt-2">CNPJ: 63.174.587/0001-75</p>
+          <p className="mt-2">CNPJ: 53.677.354/0001-31</p>
         </div>
       </div>
     </footer>
