@@ -9,13 +9,14 @@ export const Footer = () => {
     company_name: string;
     phone: string | null;
     address: string | null;
+    cnpj: string | null;
   } | null>(null);
 
   useEffect(() => {
     const fetchSiteSettings = async () => {
       const { data } = await supabase
         .from("site_settings")
-        .select("footer_logo_url, company_name, phone, address")
+        .select("footer_logo_url, company_name, phone, address, cnpj")
         .single();
       if (data) {
         setSiteSettings(data);
@@ -94,7 +95,7 @@ export const Footer = () => {
             &copy; 2024 {siteSettings?.company_name || "53.677.354 MARCOS ANTONIO SANTOS DE PAULA"}. Todos os direitos
             reservados.
           </p>
-          <p className="mt-2">CNPJ: 53.677.354/0001-31</p>
+          <p className="mt-2">CNPJ: {siteSettings?.cnpj || "53.677.354/0001-31"}</p>
         </div>
       </div>
     </footer>

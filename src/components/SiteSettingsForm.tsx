@@ -14,6 +14,7 @@ interface SiteSettings {
   company_name: string;
   phone: string | null;
   address: string | null;
+  cnpj: string | null;
 }
 
 export const SiteSettingsForm = () => {
@@ -25,6 +26,7 @@ export const SiteSettingsForm = () => {
     company_name: "53.677.354 MARCOS MÁQUINAS E FERRAMENTAS",
     phone: "(62) 99888-0796",
     address: "R. do Lírio, 525 - Jardim dos Buritis, Aparecida de Goiânia - GO, 74923-500, Brasil",
+    cnpj: "53.677.354/0001-31",
   });
 
   useEffect(() => {
@@ -48,6 +50,7 @@ export const SiteSettingsForm = () => {
           company_name: data.company_name,
           phone: data.phone || "",
           address: data.address || "",
+          cnpj: data.cnpj || "",
         });
       }
     } catch (error) {
@@ -69,6 +72,7 @@ export const SiteSettingsForm = () => {
           company_name: formData.company_name,
           phone: formData.phone || null,
           address: formData.address || null,
+          cnpj: formData.cnpj || null,
         })
         .eq("id", settings?.id);
 
@@ -119,6 +123,17 @@ export const SiteSettingsForm = () => {
               setFormData({ ...formData, address: e.target.value })
             }
             rows={3}
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="cnpj">CNPJ</Label>
+          <Input
+            id="cnpj"
+            value={formData.cnpj}
+            onChange={(e) =>
+              setFormData({ ...formData, cnpj: e.target.value })
+            }
           />
         </div>
 
