@@ -1,7 +1,28 @@
 import { Phone, MapPin, Clock } from "lucide-react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import logo from "@/assets/logo-marcos.jpeg";
 
 export const Footer = () => {
+  const [siteSettings, setSiteSettings] = useState<{
+    footer_logo_url: string | null;
+    company_name: string;
+    phone: string | null;
+    address: string | null;
+  } | null>(null);
+
+  useEffect(() => {
+    const fetchSiteSettings = async () => {
+      const { data } = await supabase
+        .from("site_settings")
+        .select("footer_logo_url, company_name, phone, address")
+        .single();
+      if (data) {
+        setSiteSettings(data);
+      }
+    };
+    fetchSiteSettings();
+  }, []);
   return (
     <footer className="bg-muted border-t border-border mt-16">
       <div className="container mx-auto px-4 py-12">
@@ -10,12 +31,12 @@ export const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <img 
-                src={logo} 
-                alt="MARCOS ANTONIO SANTOS DE PAULA" 
+                src={siteSettings?.footer_logo_url || logo}
+                alt={siteSettings?.company_name || "MARCOS ANTONIO SANTOS DE PAULA"}
                 className="h-12 w-12 object-contain rounded-md"
               />
               <h3 className="text-lg font-bold text-primary">
-                53.677.354 MARCOS ANTONIO SANTOS DE PAULA
+                {siteSettings?.company_name || "53.677.354 MARCOS ANTONIO SANTOS DE PAULA"}
               </h3>
             </div>
             <p className="text-muted-foreground mb-4">
@@ -30,11 +51,11 @@ export const Footer = () => {
             <div className="space-y-3 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>(62) 99888-0796</span>
+                <span>{siteSettings?.phone || "(62) 99888-0796"}</span>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                <span>R. do Lírio, 525 - Jardim dos Buritis, Aparecida de Goiânia - GO, 74923-500, Brasil</span>
+                <span>{siteSettings?.address || "R. do Lírio, 525 - Jardim dos Buritis, Aparecida de Goiânia - GO, 74923-500, Brasil"}</span>
               </div>
             </div>
           </div>
@@ -70,7 +91,7 @@ export const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>
-            &copy; 2024 53.677.354 MARCOS ANTONIO SANTOS DE PAULA. Todos os direitos
+            &copy; 2024 {siteSettings?.company_name || "53.677.354 MARCOS ANTONIO SANTOS DE PAULA"}. Todos os direitos
             reservados.
           </p>
           <p className="mt-2">CNPJ: 53.677.354/0001-31</p>

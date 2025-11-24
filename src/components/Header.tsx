@@ -32,6 +32,10 @@ const Header = () => {
   >([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [siteSettings, setSiteSettings] = useState<{
+    logo_url: string | null;
+    company_name: string;
+  } | null>(null);
   const navigate = useNavigate();
   const isMobile = useIsMobile();
 
@@ -46,6 +50,19 @@ const Header = () => {
       }
     };
     fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    const fetchSiteSettings = async () => {
+      const { data } = await supabase
+        .from("site_settings")
+        .select("logo_url, company_name")
+        .single();
+      if (data) {
+        setSiteSettings(data);
+      }
+    };
+    fetchSiteSettings();
   }, []);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -106,12 +123,12 @@ const Header = () => {
           <div className="flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2">
               <img 
-                src={logo} 
-                alt="MARCOS ANTONIO SANTOS DE PAULA" 
+                src={siteSettings?.logo_url || logo}
+                alt={siteSettings?.company_name || "MARCOS ANTONIO SANTOS DE PAULA"}
                 className="h-10 w-10 object-contain rounded-md"
               />
               <span className="text-xl font-bold text-foreground hidden sm:inline">
-                53.677.354 MARCOS MÁQUINAS E FERRAMENTAS
+                {siteSettings?.company_name || "53.677.354 MARCOS MÁQUINAS E FERRAMENTAS"}
               </span>
             </Link>
           </div>
