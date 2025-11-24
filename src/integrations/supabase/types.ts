@@ -142,6 +142,7 @@ export type Database = {
       site_settings: {
         Row: {
           address: string | null
+          cnpj: string | null
           company_name: string
           created_at: string
           footer_logo_url: string | null
@@ -152,6 +153,7 @@ export type Database = {
         }
         Insert: {
           address?: string | null
+          cnpj?: string | null
           company_name?: string
           created_at?: string
           footer_logo_url?: string | null
@@ -162,6 +164,7 @@ export type Database = {
         }
         Update: {
           address?: string | null
+          cnpj?: string | null
           company_name?: string
           created_at?: string
           footer_logo_url?: string | null
