@@ -7,10 +7,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Edit, Trash2, LogOut, Package, FolderOpen } from "lucide-react";
+import { Plus, Edit, Trash2, LogOut, Package, FolderOpen, Settings as SettingsIcon } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import ProductForm from "@/components/ProductForm";
 import CategoryForm from "@/components/CategoryForm";
+import { SiteSettingsForm } from "@/components/SiteSettingsForm";
 import { Product } from "@/types/product";
 
 interface Category {
@@ -214,7 +215,7 @@ const Admin = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="products" className="flex items-center gap-2">
               <Package className="w-4 h-4" />
               Produtos
@@ -222,6 +223,10 @@ const Admin = () => {
             <TabsTrigger value="categories" className="flex items-center gap-2">
               <FolderOpen className="w-4 h-4" />
               Categorias
+            </TabsTrigger>
+            <TabsTrigger value="settings" className="flex items-center gap-2">
+              <SettingsIcon className="w-4 h-4" />
+              Configurações
             </TabsTrigger>
           </TabsList>
 
@@ -368,6 +373,25 @@ const Admin = () => {
                     ))}
                   </TableBody>
                 </Table>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="settings" className="space-y-4">
+            <div>
+              <h2 className="text-2xl font-semibold">Configurações do Site</h2>
+              <p className="text-muted-foreground">Gerencie as configurações gerais do site</p>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Informações da Empresa</CardTitle>
+                <CardDescription>
+                  Atualize o logo, nome e informações de contato
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <SiteSettingsForm />
               </CardContent>
             </Card>
           </TabsContent>

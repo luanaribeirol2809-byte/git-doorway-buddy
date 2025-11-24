@@ -139,6 +139,39 @@ export type Database = {
         }
         Relationships: []
       }
+      site_settings: {
+        Row: {
+          address: string | null
+          company_name: string
+          created_at: string
+          footer_logo_url: string | null
+          id: string
+          logo_url: string | null
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          company_name?: string
+          created_at?: string
+          footer_logo_url?: string | null
+          id?: string
+          logo_url?: string | null
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          company_name?: string
+          created_at?: string
+          footer_logo_url?: string | null
+          id?: string
+          logo_url?: string | null
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
