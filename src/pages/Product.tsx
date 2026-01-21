@@ -339,7 +339,7 @@ Esta furadeira combina funcionalidade e durabilidade, sendo uma escolha confiáv
                 </span>
               ) : (
                 <span className="text-2xl font-medium text-muted-foreground">
-                  Consulte o preço pelo WhatsApp
+                  Consultar valores
                 </span>
               )}
             </div>
@@ -352,7 +352,7 @@ Esta furadeira combina funcionalidade e durabilidade, sendo uma escolha confiáv
                 onClick={handleWhatsAppClick}
               >
                 <MessageCircle className="h-5 w-5 mr-2" />
-                {hasPrice ? "Comprar pelo WhatsApp" : "Consultar Preço"}
+                {hasPrice ? "Comprar pelo WhatsApp" : "Entrar em contato"}
               </Button>
 
               <div className="flex gap-2">

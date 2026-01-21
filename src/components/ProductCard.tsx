@@ -103,7 +103,7 @@ export const ProductCard = ({
               </span>
             ) : (
               <span className="text-lg font-medium text-muted-foreground">
-                Consulte o preço
+                Consultar valores
               </span>
             )}
           </div>
@@ -115,7 +115,7 @@ export const ProductCard = ({
               onClick={handleWhatsAppClick}
             >
               <MessageCircle className="h-4 w-4 mr-2" />
-              {hasPrice ? "Comprar pelo WhatsApp" : "Consultar Preço"}
+              {hasPrice ? "Comprar pelo WhatsApp" : "Entrar em contato"}
             </Button>
 
             <Button variant="outline" className="w-full" size="sm" asChild>
