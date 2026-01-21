@@ -219,12 +219,12 @@ Esta furadeira combina funcionalidade e durabilidade, sendo uma escolha confiáv
     ));
   };
 
+  const hasPrice = (product.price || 0) > 0;
+
   const handleWhatsAppClick = () => {
-    const message = `Olá! Tenho interesse no produto: ${
-      product.name
-    }, Modelo: ${
-      product.model || "N/A"
-    }. Poderia me dar mais informações sobre preço e disponibilidade?`;
+    const message = hasPrice
+      ? `Olá! Tenho interesse no produto: ${product.name}, Modelo: ${product.model || "N/A"}. Poderia me dar mais informações?`
+      : `Olá! Gostaria de saber o preço do produto: ${product.name}, Modelo: ${product.model || "N/A"}. Poderia me informar?`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=5562998880796&text=${encodeURIComponent(
       message
     )}`;
@@ -328,14 +328,20 @@ Esta furadeira combina funcionalidade e durabilidade, sendo uma escolha confiáv
               </span>
             </div>
 
-            {/* Price */}
+            {/* Price or Contact for Price */}
             <div className="mb-6">
-              <span className="text-4xl font-bold text-primary">
-                R${" "}
-                {(product.price || 0).toLocaleString("pt-BR", {
-                  minimumFractionDigits: 2,
-                })}
-              </span>
+              {hasPrice ? (
+                <span className="text-4xl font-bold text-primary">
+                  R${" "}
+                  {(product.price || 0).toLocaleString("pt-BR", {
+                    minimumFractionDigits: 2,
+                  })}
+                </span>
+              ) : (
+                <span className="text-2xl font-medium text-muted-foreground">
+                  Consulte o preço pelo WhatsApp
+                </span>
+              )}
             </div>
 
             {/* Action Buttons */}
@@ -346,7 +352,7 @@ Esta furadeira combina funcionalidade e durabilidade, sendo uma escolha confiáv
                 onClick={handleWhatsAppClick}
               >
                 <MessageCircle className="h-5 w-5 mr-2" />
-                Comprar pelo WhatsApp
+                {hasPrice ? "Comprar pelo WhatsApp" : "Consultar Preço"}
               </Button>
 
               <div className="flex gap-2">

@@ -15,6 +15,7 @@ interface SiteSettings {
   phone: string | null;
   address: string | null;
   cnpj: string | null;
+  site_title: string | null;
 }
 
 export const SiteSettingsForm = () => {
@@ -27,6 +28,7 @@ export const SiteSettingsForm = () => {
     phone: "(62) 99888-0796",
     address: "R. do Lírio, 525 - Jardim dos Buritis, Aparecida de Goiânia - GO, 74923-500, Brasil",
     cnpj: "53.677.354/0001-31",
+    site_title: "MARCOS MÁQUINAS E FERRAMENTAS",
   });
 
   useEffect(() => {
@@ -51,6 +53,7 @@ export const SiteSettingsForm = () => {
           phone: data.phone || "",
           address: data.address || "",
           cnpj: data.cnpj || "",
+          site_title: data.site_title || "",
         });
       }
     } catch (error) {
@@ -73,6 +76,7 @@ export const SiteSettingsForm = () => {
           phone: formData.phone || null,
           address: formData.address || null,
           cnpj: formData.cnpj || null,
+          site_title: formData.site_title || null,
         })
         .eq("id", settings?.id);
 
@@ -123,6 +127,18 @@ export const SiteSettingsForm = () => {
               setFormData({ ...formData, address: e.target.value })
             }
             rows={3}
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="site_title">Título do Site (Aba do Navegador)</Label>
+          <Input
+            id="site_title"
+            value={formData.site_title}
+            onChange={(e) =>
+              setFormData({ ...formData, site_title: e.target.value })
+            }
+            placeholder="Título exibido na aba do navegador"
           />
         </div>
 
