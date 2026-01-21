@@ -46,12 +46,16 @@ export const ProductCard = ({
   };
 
   const handleWhatsAppClick = () => {
-    const message = `Olá! Tenho interesse no produto: ${name}. Poderia me dar mais informações?`;
+    const message = price > 0
+      ? `Olá! Tenho interesse no produto: ${name}. Poderia me dar mais informações?`
+      : `Olá! Gostaria de saber o preço do produto: ${name}. Poderia me informar?`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=5562998880796&text=${encodeURIComponent(
       message
     )}`;
     window.open(whatsappUrl, "_blank");
   };
+
+  const hasPrice = price > 0;
 
   return (
     <Card
@@ -91,11 +95,17 @@ export const ProductCard = ({
             </span>
           </div>
 
-          {/* Price */}
+          {/* Price or Contact for Price */}
           <div className="mb-4">
-            <span className="text-2xl font-bold text-primary">
-              R$ {price.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
-            </span>
+            {hasPrice ? (
+              <span className="text-2xl font-bold text-primary">
+                R$ {price.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+              </span>
+            ) : (
+              <span className="text-lg font-medium text-muted-foreground">
+                Consulte o preço
+              </span>
+            )}
           </div>
 
           {/* Action Buttons */}
@@ -105,7 +115,7 @@ export const ProductCard = ({
               onClick={handleWhatsAppClick}
             >
               <MessageCircle className="h-4 w-4 mr-2" />
-              Comprar pelo WhatsApp
+              {hasPrice ? "Comprar pelo WhatsApp" : "Consultar Preço"}
             </Button>
 
             <Button variant="outline" className="w-full" size="sm" asChild>
